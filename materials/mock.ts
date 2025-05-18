@@ -1,21 +1,4 @@
-export interface MenuItem {
-  id: string;
-  name: string;
-  price: number;
-  ingredients: string[];
-}
-export interface Review {
-  id: string;
-  user: string;
-  text: string;
-  rating: number;
-}
-export interface Restaurant {
-  id: string;
-  name: string;
-  menu: MenuItem[];
-  reviews: Review[];
-}
+import type { Restaurant } from "./types";
 export const restaurants: Restaurant[] = [
   {
     id: "a757a0e9-03c1-4a2a-b384-8ac21dbe2fb2",
