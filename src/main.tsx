@@ -13,7 +13,7 @@ reactRoot.render(
   <div style={{ marginLeft: "20px" }}>
     {restaurants.map(({ id, name, menu, reviews }, index) => (
       <div key={id}>
-        <h2>{`${++index}. ${name}`}</h2>
+        <h2>{`${index + 1}. ${name}`}</h2>
         <h3>Меню</h3>
         <ul>
           {menu.map((dish) => (

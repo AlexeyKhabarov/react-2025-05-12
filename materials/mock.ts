@@ -1,4 +1,5 @@
-import type { Restaurant } from "./types";
+import type { Restaurant } from "../src/types";
+
 export const restaurants: Restaurant[] = [
   {
     id: "a757a0e9-03c1-4a2a-b384-8ac21dbe2fb2",
