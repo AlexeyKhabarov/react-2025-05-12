@@ -1,2 +1,1 @@
-import type { Restaurant } from "./restaurants";
-export type { Restaurant };
+export type { Restaurant } from "./restaurants";
