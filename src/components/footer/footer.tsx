@@ -8,7 +8,6 @@ export const Footer = () => {
         padding: "16px 20px",
         backgroundColor: "#f9f9f9",
         boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
-        marginTop: "20px",
         boxSizing: "border-box",
       }}
     >

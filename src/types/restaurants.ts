@@ -19,7 +19,7 @@ export interface Restaurant {
 
 export type RestaurantsProps = {
   restaurants: Restaurant[];
-  selectedId: string;
+  onSelectRestaurant: (id: string) => void;
 };
 export type RestaurantProps = {
   restaurant: Restaurant;
