@@ -16,3 +16,11 @@ export interface Restaurant {
   menu: MenuItem[];
   reviews: Review[];
 }
+
+export type RestaurantsProps = {
+  restaurants: Restaurant[];
+  onSelectRestaurant: (id: string) => void;
+};
+export type RestaurantProps = {
+  restaurant: Restaurant;
+};
