@@ -2,3 +2,4 @@ export type { Restaurant, MenuItem, RestaurantsProps, RestaurantProps } from "./
 export type { TabProps } from "./tab";
 export type { ReviewProps } from "./review";
 export type { DishProps } from "./menu";
+export type { CounterProps } from "./counter";

@@ -1,7 +1,7 @@
-import { useCount } from "./useCount";
 import "./counter.css";
-export const Counter = () => {
-  const { count, onIncrement, onDecrement } = useCount();
+import type { CounterProps } from "../../types";
+
+export const Counter = ({ count, onIncrement, onDecrement }: CounterProps) => {
   return (
     <div className="counter-control">
       <button onClick={onDecrement} className="counter-button">
