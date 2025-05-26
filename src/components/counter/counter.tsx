@@ -1,5 +1,10 @@
 import "./counter.css";
-import type { CounterProps } from "../../types";
+
+type CounterProps = {
+  count: number;
+  onIncrement: () => void;
+  onDecrement: () => void;
+};
 
 export const Counter = ({ count, onIncrement, onDecrement }: CounterProps) => {
   return (
