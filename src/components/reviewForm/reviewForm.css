@@ -1,0 +1,86 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form>div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form span {
+  font-size: 14px;
+  color: #555;
+}
+
+.form input,
+.form textarea {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+  background-color: #f9f9f9;
+}
+
+.form input:focus,
+.form textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form .counter-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.form .counter-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.form .counter-button:hover {
+  background-color: #0056b3;
+}
+
+.form .counter-count {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.form .button {
+  align-self: flex-end;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  transition: background-color 0.2s ease;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.form .button:hover {
+  background-color: #eee;
+}

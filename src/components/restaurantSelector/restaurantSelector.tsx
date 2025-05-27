@@ -5,13 +5,13 @@ import { Tab } from "../tab/tab";
 import "./restaurantSelector.css";
 export const RestaurantSelector = () => {
   const [selectedId, setSelectedId] = useState(restaurants[0]?.id || "");
-  const selectedRestaurant = restaurants.find(({ id }) => id === selectedId);
+  const selectedRestaurant = restaurants.find(({ id, name }) => id === selectedId && name);
   return (
     <>
       <div className="restaurantSelector">
-        {restaurants.map(({ name, id }) => (
-          <Tab key={id} name={name} id={id} onSelectRestaurant={(id) => setSelectedId(id)} />
-        ))}
+        {restaurants.map(({ name, id }) =>
+          name ? <Tab key={id} name={name} id={id} onSelectRestaurant={(id) => setSelectedId(id)} /> : null
+        )}
       </div>
       <div>
         {selectedRestaurant ? (

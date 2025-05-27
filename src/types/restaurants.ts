@@ -4,23 +4,15 @@ export interface MenuItem {
   price: number;
   ingredients: string[];
 }
-export interface Review {
+export interface ReviewItem {
   id: string;
   user: string;
   text: string;
   rating: number;
 }
-export interface Restaurant {
+export interface RestaurantItem {
   id: string;
   name: string;
   menu: MenuItem[];
-  reviews: Review[];
+  reviews: ReviewItem[];
 }
-
-export type RestaurantsProps = {
-  restaurants: Restaurant[];
-  onSelectRestaurant: (id: string) => void;
-};
-export type RestaurantProps = {
-  restaurant: Restaurant;
-};
