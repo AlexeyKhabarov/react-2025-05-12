@@ -1,0 +1,24 @@
+.header {
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/public/images/food.jpg');
+  background-size: cover;
+  background-position: center 35%;
+  background-repeat: no-repeat;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  margin: auto;
+  color: #ffffff;
+  font-size: 4em;
+  font-weight: 700;
+}

@@ -1,0 +1,22 @@
+.footerContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.copyright {
+  margin-bottom: 1rem;
+}
+
+.copyrightLink {
+  color: white;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.copyrightLink:hover {
+  color: #007bff;
+}
