@@ -1,4 +1,4 @@
-import "./tab.css";
+import style from "./tab.module.css";
 type TabProps = {
   name: string;
   id: string;
@@ -7,7 +7,7 @@ type TabProps = {
 
 export const Tab = ({ name, id, onSelectRestaurant }: TabProps) => {
   return (
-    <button className="tab" onClick={() => onSelectRestaurant(id)}>
+    <button className={style.tab} onClick={() => onSelectRestaurant(id)}>
       {name}
     </button>
   );

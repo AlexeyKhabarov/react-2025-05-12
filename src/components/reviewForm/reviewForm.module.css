@@ -10,19 +10,19 @@
   margin: 0 auto;
 }
 
-.form>div {
+.field {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.form span {
+.label {
   font-size: 14px;
   color: #555;
 }
 
-.form input,
-.form textarea {
+.input,
+.textarea {
   padding: 10px 12px;
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -31,44 +31,25 @@
   background-color: #f9f9f9;
 }
 
-.form input:focus,
-.form textarea:focus {
+.input:focus,
+.textarea:focus {
   border-color: #007bff;
   outline: none;
 }
 
-.form textarea {
+.textarea {
   resize: vertical;
   min-height: 100px;
 }
 
-.form .counter-control {
+.counterControl {
   display: inline-flex;
   align-items: center;
   gap: 12px;
   margin-top: 4px;
 }
 
-.form .counter-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.form .counter-button:hover {
-  background-color: #0056b3;
-}
-
-.form .counter-count {
-  font-weight: bold;
-  font-size: 16px;
-}
-
-.form .button {
+.button {
   align-self: flex-end;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -81,6 +62,6 @@
   cursor: pointer;
 }
 
-.form .button:hover {
+.button:hover {
   background-color: #eee;
 }

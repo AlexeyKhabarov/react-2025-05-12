@@ -1,17 +1,17 @@
 import type { ReviewItem } from "../../types/restaurants";
-import "./reviews.css";
+import style from "./reviews.module.css";
 type ReviewProps = {
   reviews: ReviewItem[];
 };
 export const Reviews = ({ reviews }: ReviewProps) => {
   return reviews.length ? (
-    <div className="restaurant__section">
-      <h3 className="restaurant__subtitle">Reviews</h3>
-      <div className="reviews">
+    <div className={style.restaurantSection}>
+      <h3 className={style.restaurantSubtitle}>Reviews</h3>
+      <div className={style.reviews}>
         {reviews.map(({ id, text }) =>
           text ? (
-            <div key={id} className="review">
-              <p className="review__text">{text}</p>
+            <div key={id} className={style.review}>
+              <p className={style.reviewText}>{text}</p>
             </div>
           ) : null
         )}
