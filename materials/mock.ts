@@ -1,6 +1,6 @@
-import type { Restaurant } from "../src/types";
+import type { RestaurantItem } from "../src/types/restaurants";
 
-export const restaurants: Restaurant[] = [
+export const restaurants: RestaurantItem[] = [
   {
     id: "a757a0e9-03c1-4a2a-b384-8ac21dbe2fb2",
     name: "Dishoom",
@@ -142,3 +142,5 @@ export const restaurants: Restaurant[] = [
     ],
   },
 ];
+
+export const USER = "Alexey";

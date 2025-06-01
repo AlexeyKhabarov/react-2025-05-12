@@ -7,14 +7,14 @@
   text-align: center;
 }
 
-.copyright {
+.copyrightLight {
   margin-bottom: 1rem;
+  color: var(--text-color-light);
 }
 
-.copyrightLink {
-  color: white;
-  text-decoration: underline;
-  transition: color 0.3s;
+.copyrightDark {
+  margin-bottom: 1rem;
+  color: var(--text-color-dark-secondary);
 }
 
 .copyrightLink:hover {

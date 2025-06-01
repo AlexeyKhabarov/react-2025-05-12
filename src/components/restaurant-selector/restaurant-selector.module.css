@@ -1,0 +1,21 @@
+.restaurantSelectorLight {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+  padding: 4px 12px;
+  background-color: var(--background-light-primary);
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.restaurantSelectorDark {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+  padding: 4px 12px;
+  background-color: var(--background-dark-primary);
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}

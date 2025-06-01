@@ -6,8 +6,8 @@ export const Button = ({
   className,
 }: {
   title: string;
-  onClick: MouseEventHandler<HTMLButtonElement>;
-  className: string;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+  className?: string;
 }) => {
   return (
     <button onClick={onClick} className={className}>
