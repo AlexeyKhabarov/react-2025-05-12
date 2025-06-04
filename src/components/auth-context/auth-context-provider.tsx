@@ -1,13 +1,23 @@
-import { useState, type PropsWithChildren, type Dispatch, type SetStateAction, createContext } from "react";
+import { useState, type PropsWithChildren, createContext } from "react";
+
+type AuthState = {
+  isAuthorized: boolean;
+  name?: string;
+};
 
 type AuthContextType = {
-  username: string;
-  setUsername: Dispatch<SetStateAction<string>>;
+  auth: AuthState;
+  toggleAuth: () => void;
 };
 
 export const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthContextProvider: React.FC<PropsWithChildren> = ({ children }) => {
-  const [username, setUsername] = useState("");
-  return <AuthContext value={{ username, setUsername }}>{children}</AuthContext>;
+  const [auth, setAuth] = useState<AuthState>({ isAuthorized: false });
+  const toggleAuth = () => {
+    setAuth((prev) => {
+      return prev.isAuthorized ? { isAuthorized: false } : { isAuthorized: true, name: "User" };
+    });
+  };
+  return <AuthContext value={{ auth, toggleAuth }}>{children}</AuthContext>;
 };

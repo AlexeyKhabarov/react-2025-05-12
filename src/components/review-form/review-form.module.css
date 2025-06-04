@@ -1,4 +1,4 @@
-.formLight {
+.form.light {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -10,7 +10,7 @@
   margin: 0 auto;
 }
 
-.formDark {
+.form.dark {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -28,33 +28,34 @@
   gap: 8px;
 }
 
-.labelLight {
+.label {
   font-size: 14px;
+}
+
+.label.light {
   color: #555;
 }
 
-.labelDark {
-  font-size: 14px;
+.label.dark {
   color: var(--text-color-dark-secondary);
 }
 
-.inputLight,
-.textareaLight {
+.input,
+.textarea {
   padding: 10px 12px;
   border: 1px solid #ddd;
   border-radius: 6px;
   font-size: 14px;
   transition: border-color 0.2s ease;
+}
+
+.input.light,
+.textarea.light {
   background-color: #f9f9f9;
 }
 
-.inputDark,
-.textareaDark {
-  padding: 10px 12px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 14px;
-  transition: border-color 0.2s ease;
+.input.dark,
+.textarea.dark {
   background-color: var(--input-dark);
   color: var(--text-color-dark-secondary)
 }
@@ -77,36 +78,27 @@
   margin-top: 4px;
 }
 
-.buttonLight {
+.button {
   align-self: flex-end;
   border: 1px solid #ccc;
   border-radius: 4px;
+  transition: background-color 0.2s ease;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.button.light {
   background-color: #f9f9f9;
-  transition: background-color 0.2s ease;
-  color: black;
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-size: 14px;
-  cursor: pointer;
+  color: var(--text-color-light-secondary);
 }
 
 .button:hover {
   background-color: #eee;
 }
 
-.buttonDark {
-  align-self: flex-end;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.button.dark {
   background-color: var(--button-light);
-  transition: background-color 0.2s ease;
   color: var(--text-color-dark-secondary);
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.button:hover {
-  background-color: #eee;
 }

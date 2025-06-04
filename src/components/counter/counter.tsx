@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import { Button } from "../button/button";
 import { useThemeContext } from "../hooks/useThemeContext";
 import style from "./counter.module.css";
 
@@ -10,23 +10,13 @@ type CounterProps = {
 
 export const Counter = ({ count, onIncrement, onDecrement }: CounterProps) => {
   const { theme } = useThemeContext();
-  const buttonClass = classNames({
-    [style.counterButtonDark]: theme === "dark",
-    [style.counterButtonLight]: theme === "light",
-  });
-  const countClass = classNames({
-    [style.counterCountDark]: theme === "dark",
-    [style.counterCountLight]: theme === "light",
-  });
+  console.log("theme", theme);
+
   return (
     <div className={style.counterControls}>
-      <button onClick={onDecrement} className={buttonClass}>
-        -
-      </button>
-      <span className={countClass}>{count}</span>
-      <button onClick={onIncrement} className={buttonClass}>
-        +
-      </button>
+      <Button onClick={onDecrement} className={`${style.button} ${style[theme]}`} title="-" />
+      <span className={`${style.count} ${style[theme]}`}>{count}</span>
+      <Button onClick={onIncrement} className={`${style.button} ${style[theme]}`} title="+" />
     </div>
   );
 };

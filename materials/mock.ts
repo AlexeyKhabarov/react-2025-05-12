@@ -142,5 +142,3 @@ export const restaurants: RestaurantItem[] = [
     ],
   },
 ];
-
-export const USER = "Alexey";

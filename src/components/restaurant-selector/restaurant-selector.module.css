@@ -1,4 +1,4 @@
-.restaurantSelectorLight {
+.light {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -9,7 +9,7 @@
   box-sizing: border-box;
 }
 
-.restaurantSelectorDark {
+.dark {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;

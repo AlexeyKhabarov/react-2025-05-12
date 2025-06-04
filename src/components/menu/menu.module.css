@@ -1,8 +1,8 @@
-.restaurantSection {
+.section {
   margin-bottom: 30px;
 }
 
-.restaurantSubtitleLight {
+.light {
   color: #555;
   font-size: 1.2em;
   margin-bottom: 10px;
@@ -11,7 +11,7 @@
   border-radius: 4px;
 }
 
-.restaurantSubtitleDark {
+.dark {
   color: var(--text-color-dark-secondary);
   font-size: 1.2em;
   margin-bottom: 10px;
