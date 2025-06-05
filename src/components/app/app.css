@@ -1,7 +1,27 @@
-html,
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
   height: 100%;
   font-family: sans-serif;
+  overflow-y: scroll;
+}
+
+:root {
+  --background-light-primary: #F8F9FA;
+  --background-light-secondary: #ffffff;
+  --text-color-light: #333;
+  --button-light: #2962FF;
+  --button-light-secondary: #0836b6;
+  --input-light: #FDFDFD;
+  --background-dark-primary: #1E1E1E;
+  --background-dark-secondary: #2A2730;
+  --text-color-dark-primary: #FFFFFF;
+  --text-color-dark-secondary: #BDBDBD;
+  --button-dark: #BB86FC;
+  --input-dark: #1E1E1E;
+
 }

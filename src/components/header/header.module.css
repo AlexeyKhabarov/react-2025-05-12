@@ -1,24 +1,44 @@
 .header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  border: 1px solid #ddd;
-  border-radius: 8px;
   padding: 16px 20px;
-  background-color: #f9f9f9;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   box-sizing: border-box;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/public/images/food.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/images/food.jpg');
   background-size: cover;
   background-position: center 35%;
   background-repeat: no-repeat;
   min-height: 120px;
+}
+
+.titleContainer {
   display: flex;
-  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .title {
-  margin: auto;
-  color: #ffffff;
+  color: var(--background-light-primary);
   font-size: 4em;
   font-weight: 700;
+  margin: 0;
+}
+
+.actions {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.authButtons {
+  display: flex;
+  gap: 8px;
 }

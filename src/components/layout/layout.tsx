@@ -1,12 +1,14 @@
 import { type PropsWithChildren } from "react";
 import { Header } from "../header/header";
 import { Footer } from "../footer/footer";
-import { ProgressBar } from "../progressBar/progressBar";
+import { ProgressBar } from "../progress-bar/progress-bar";
 import style from "./layout.module.css";
+import { useThemeContext } from "../hooks/useThemeContext";
 
 export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
+  const { theme } = useThemeContext();
   return (
-    <div className={style.layout}>
+    <div className={style[theme]}>
       <ProgressBar />
       <Header />
       <main className={style.main}>{children}</main>

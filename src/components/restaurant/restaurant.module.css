@@ -8,22 +8,16 @@
   margin: 0 auto;
 }
 
-.restaurantTitle {
+.title.light {
   color: #333;
   border-bottom: 2px solid #f0f0f0;
   padding-bottom: 8px;
   margin-bottom: 20px;
 }
 
-.restaurantSection {
-  margin-bottom: 30px;
-}
-
-.restaurantSubtitle {
-  color: #555;
-  font-size: 1.2em;
-  margin-bottom: 10px;
-  background-color: #f8f8f8;
-  padding: 8px 12px;
-  border-radius: 4px;
+.title.dark {
+  color: var(--text-color-dark-secondary);
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
 }

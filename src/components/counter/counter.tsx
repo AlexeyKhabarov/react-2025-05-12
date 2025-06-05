@@ -1,3 +1,6 @@
+import classNames from "classnames";
+import { Button } from "../button/button";
+import { useThemeContext } from "../hooks/useThemeContext";
 import style from "./counter.module.css";
 
 type CounterProps = {
@@ -7,15 +10,13 @@ type CounterProps = {
 };
 
 export const Counter = ({ count, onIncrement, onDecrement }: CounterProps) => {
+  const { theme } = useThemeContext();
+
   return (
     <div className={style.counterControls}>
-      <button onClick={onDecrement} className={style.counterButton}>
-        -
-      </button>
-      <span className={style.counterCount}>{count}</span>
-      <button onClick={onIncrement} className={style.counterButton}>
-        +
-      </button>
+      <Button onClick={onDecrement} className={classNames(style.button, style[theme])} title="-" />
+      <span className={classNames(style.count, style[theme])}>{count}</span>
+      <Button onClick={onIncrement} className={classNames(style.button, style[theme])} title="+" />
     </div>
   );
 };

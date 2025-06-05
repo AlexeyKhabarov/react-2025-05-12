@@ -1,28 +1,48 @@
-.counterControls {
+.controls {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.counterButton {
+.button {
   padding: 4px 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: #f9f9f9;
-  transition: background-color 0.2s ease;
   cursor: pointer;
   font-size: 16px;
   min-width: 30px;
+  transition: background-color 0.2s ease;
 }
 
-.counterButton:hover {
+.button.light {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.button.light:hover {
   background-color: #eee;
 }
 
-.counterCount {
+.button.dark {
+  background-color: var(--button-light);
+  color: var(--text-color-dark);
+}
+
+.button.dark:hover {
+  background-color: var(--button-light-secondary);
+}
+
+.count {
   min-width: 20px;
   text-align: center;
   font-weight: 500;
-  color: #555;
   padding: 0 20px;
+}
+
+.count.light {
+  color: #555;
+}
+
+.count.dark {
+  color: var(--text-color-dark-secondary);
 }

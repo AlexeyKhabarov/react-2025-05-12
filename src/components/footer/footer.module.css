@@ -1,4 +1,4 @@
-.footerContainer {
+.container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -7,16 +7,16 @@
   text-align: center;
 }
 
-.copyright {
+.light {
   margin-bottom: 1rem;
+  color: var(--text-color-light);
 }
 
-.copyrightLink {
-  color: white;
-  text-decoration: underline;
-  transition: color 0.3s;
+.dark {
+  margin-bottom: 1rem;
+  color: var(--text-color-dark-secondary);
 }
 
-.copyrightLink:hover {
+.link:hover {
   color: #007bff;
 }

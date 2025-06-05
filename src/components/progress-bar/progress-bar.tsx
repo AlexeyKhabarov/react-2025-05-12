@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styles from "./progressBar.module.css";
+import styles from "./progress-bar.module.css";
 
 export const ProgressBar = () => {
   const [progressWidth, setProgressWidth] = useState(0);

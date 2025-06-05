@@ -1,14 +1,21 @@
-.restaurantSection {
+.section {
   margin-bottom: 30px;
 }
 
-.restaurantSubtitle {
-  color: #555;
-  font-size: 1.2em;
-  margin-bottom: 10px;
-  background-color: #f8f8f8;
+.subtitle {
   padding: 8px 12px;
   border-radius: 4px;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.subtitle.light {
+  color: #555;
+  background-color: #f8f8f8;
+}
+
+.subtitle.dark {
+  color: var(--text-color-dark-secondary);
 }
 
 .reviews {
@@ -19,12 +26,22 @@
 
 .review {
   padding: 12px;
-  border-left: 4px solid #007bff;
-  background-color: #f9f9f9;
+  border-left: 4px solid var(--button-light);
   border-radius: 4px;
 }
 
-.reviewText {
+.review.light {
+  background-color: #f9f9f9;
+}
+
+.text {
   margin: 0;
+}
+
+.text.light {
   color: #333;
+}
+
+.text.dark {
+  color: var(--text-color-dark-secondary);
 }
