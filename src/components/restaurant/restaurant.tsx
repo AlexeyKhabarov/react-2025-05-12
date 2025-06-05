@@ -5,6 +5,7 @@ import style from "./restaurant.module.css";
 import { useThemeContext } from "../hooks/useThemeContext";
 import { Feedback } from "../feedback/feedback";
 import { useAuthContext } from "../hooks/useAuthContext";
+import classNames from "classnames";
 
 type RestaurantProps = {
   restaurant: RestaurantItem;
@@ -18,7 +19,7 @@ export const Restaurant = ({ restaurant }: RestaurantProps) => {
 
   return (
     <div className={style.restaurant}>
-      <h2 className={`${style.title} ${style[theme]}`}>{name}</h2>
+      <h2 className={classNames(style.title, style[theme])}>{name}</h2>
       <Menu menu={menu} />
       <Reviews reviews={reviews} />
       {isAuthorized ? <Feedback /> : null}

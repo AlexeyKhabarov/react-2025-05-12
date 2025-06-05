@@ -4,6 +4,7 @@ import { useThemeContext } from "../hooks/useThemeContext";
 import style from "./dish.module.css";
 import { useDishCount } from "./useDishCount";
 import { useAuthContext } from "../hooks/useAuthContext";
+import classNames from "classnames";
 
 type DishProps = {
   dish: MenuItem;
@@ -15,8 +16,8 @@ export const Dish = ({ dish }: DishProps) => {
   const { auth } = useAuthContext();
   const { isAuthorized } = auth;
   return (
-    <div className={`${style.container} ${style[theme]}`}>
-      <div className={`${style.name} ${style[theme]}`}>{dish.name}</div>
+    <div className={classNames(style.container, style[theme])}>
+      <div className={classNames(style.name, style[theme])}>{dish.name}</div>
       {isAuthorized ? <Counter count={count} onDecrement={onDecrement} onIncrement={onIncrement} /> : null}
     </div>
   );

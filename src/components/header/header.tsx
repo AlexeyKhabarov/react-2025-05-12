@@ -1,14 +1,8 @@
 import style from "./header.module.css";
-import { useThemeContext } from "../hooks/useThemeContext";
 import { ToggleSwitch } from "../toggle-switch/toggle-switch";
 import { AuthButton } from "../auth-button/auth-button";
 
 export const Header = () => {
-  const { setTheme } = useThemeContext();
-  const handleChange = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  };
-
   return (
     <div className={style.header}>
       <div className={style.titleContainer}>
@@ -16,7 +10,7 @@ export const Header = () => {
       </div>
       <div className={style.actions}>
         <AuthButton />
-        <ToggleSwitch onChange={handleChange} />
+        <ToggleSwitch />
       </div>
     </div>
   );
