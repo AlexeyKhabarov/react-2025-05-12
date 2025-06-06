@@ -1,4 +1,3 @@
-import type { RestaurantItem } from "../../types/restaurants";
 import { Menu } from "../menu/menu";
 import { Reviews } from "../reviews/reviews";
 import style from "./restaurant.module.css";
@@ -6,13 +5,12 @@ import { useThemeContext } from "../hooks/useThemeContext";
 import { Feedback } from "../feedback/feedback";
 import { useAuthContext } from "../hooks/useAuthContext";
 import classNames from "classnames";
-
 type RestaurantProps = {
-  restaurant: RestaurantItem;
+  name: string;
+  menu: string[];
+  reviews: string[];
 };
-
-export const Restaurant = ({ restaurant }: RestaurantProps) => {
-  const { name, menu, reviews } = restaurant;
+export const Restaurant = ({ name, menu, reviews }: RestaurantProps) => {
   const { theme } = useThemeContext();
   const { auth } = useAuthContext();
   const { isAuthorized } = auth;

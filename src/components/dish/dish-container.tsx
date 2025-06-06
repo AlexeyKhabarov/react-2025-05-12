@@ -1,0 +1,14 @@
+import { useSelector } from "react-redux";
+import { selectDishById } from "../../redux/entities/dishes/slice";
+import { Dish } from "./dish";
+import type { RootState } from "../../redux/store";
+
+type DishContainerProps = {
+  id: string;
+};
+
+export const DishContainer = ({ id }: DishContainerProps) => {
+  const dish = useSelector((state: RootState) => selectDishById(state, id));
+
+  return <Dish name={dish.name} price={dish.price} ingredients={dish.ingredients} />;
+};
