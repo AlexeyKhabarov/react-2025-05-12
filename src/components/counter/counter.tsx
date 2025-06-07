@@ -5,18 +5,18 @@ import style from "./counter.module.css";
 
 type CounterProps = {
   count: number;
-  onIncrement: () => void;
-  onDecrement: () => void;
+  increment: () => void;
+  decrement: () => void;
 };
 
-export const Counter = ({ count, onIncrement, onDecrement }: CounterProps) => {
+export const Counter = ({ count, increment, decrement }: CounterProps) => {
   const { theme } = useThemeContext();
 
   return (
     <div className={style.counterControls}>
-      <Button onClick={onDecrement} className={classNames(style.button, style[theme])} title="-" />
+      <Button onClick={decrement} className={classNames(style.button, style[theme])} title="-" />
       <span className={classNames(style.count, style[theme])}>{count}</span>
-      <Button onClick={onIncrement} className={classNames(style.button, style[theme])} title="+" />
+      <Button onClick={increment} className={classNames(style.button, style[theme])} title="+" />
     </div>
   );
 };

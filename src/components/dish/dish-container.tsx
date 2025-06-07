@@ -10,5 +10,5 @@ type DishContainerProps = {
 export const DishContainer = ({ id }: DishContainerProps) => {
   const dish = useSelector((state: RootState) => selectDishById(state, id));
 
-  return <Dish name={dish.name} price={dish.price} ingredients={dish.ingredients} />;
+  return <Dish id={id} name={dish.name} price={dish.price} ingredients={dish.ingredients} />;
 };

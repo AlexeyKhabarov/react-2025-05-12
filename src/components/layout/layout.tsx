@@ -4,6 +4,7 @@ import { Footer } from "../footer/footer";
 import { ProgressBar } from "../progress-bar/progress-bar";
 import style from "./layout.module.css";
 import { useThemeContext } from "../hooks/useThemeContext";
+import { Cart } from "../cart/cart";
 
 export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
   const { theme } = useThemeContext();
@@ -12,6 +13,7 @@ export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
       <ProgressBar />
       <Header />
       <main className={style.main}>{children}</main>
+      <Cart />
       <Footer />
     </div>
   );
