@@ -9,10 +9,10 @@ type DishesState = {
 
 const initialState: DishesState = {
   ids: normalizedDishes.map(({ id }) => id),
-  entities: normalizedDishes.reduce((acc, dish) => {
+  entities: normalizedDishes.reduce<Record<string, Dish>>((acc, dish) => {
     acc[dish.id] = dish;
     return acc;
-  }, {} as Record<string, Dish>),
+  }, {}),
 };
 
 export const dishesSlice = createSlice({

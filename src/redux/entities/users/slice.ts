@@ -8,10 +8,10 @@ type UsersState = {
 };
 const initialState: UsersState = {
   ids: normalizedUsers.map(({ id }) => id),
-  entities: normalizedUsers.reduce((acc, user) => {
+  entities: normalizedUsers.reduce<Record<string, User>>((acc, user) => {
     acc[user.id] = user;
     return acc;
-  }, {} as Record<string, User>),
+  }, {}),
 };
 
 export const usersSlice = createSlice({

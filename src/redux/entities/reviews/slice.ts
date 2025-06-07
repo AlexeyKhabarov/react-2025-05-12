@@ -8,10 +8,10 @@ type ReviewsState = {
 };
 const initialState = {
   ids: normalizedReviews.map(({ id }) => id),
-  entities: normalizedReviews.reduce((acc, review) => {
+  entities: normalizedReviews.reduce<Record<string, Review>>((acc, review) => {
     acc[review.id] = review;
     return acc;
-  }, {} as Record<string, Review>),
+  }, {}),
 };
 
 export const reviewsSlice = createSlice({
