@@ -1,17 +1,21 @@
+import { Provider } from "react-redux";
 import { AuthContextProvider } from "../auth-context/auth-context-provider";
 import { Layout } from "../layout/layout";
-import { RestaurantSelector } from "../restaurant-selector/restaurant-selector";
+import { RestaurantPage } from "../restaurant-page/restaurant-page";
 import { ThemeContextProvider } from "../theme-context/theme-context-provider";
 import "./app.css";
+import { store } from "../../redux/store";
 
 export const App = () => {
   return (
-    <ThemeContextProvider>
+    <Provider store={store}>
       <AuthContextProvider>
-        <Layout>
-          <RestaurantSelector />
-        </Layout>
+        <ThemeContextProvider>
+          <Layout>
+            <RestaurantPage />
+          </Layout>
+        </ThemeContextProvider>
       </AuthContextProvider>
-    </ThemeContextProvider>
+    </Provider>
   );
 };
