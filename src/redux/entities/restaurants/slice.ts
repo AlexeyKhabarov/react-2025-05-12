@@ -8,10 +8,10 @@ type RestaurantsState = {
 };
 const initialState = {
   ids: normalizedRestaurants.map(({ id }) => id),
-  entities: normalizedRestaurants.reduce((acc, restaurant) => {
+  entities: normalizedRestaurants.reduce<Record<string, RestaurantItem>>((acc, restaurant) => {
     acc[restaurant.id] = restaurant;
     return acc;
-  }, {} as Record<string, RestaurantItem>),
+  }, {}),
 };
 
 export const restaurantsSlice = createSlice({
