@@ -8,9 +8,9 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   margin-bottom: 10px;
   box-sizing: border-box;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/images/food.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80");
   background-size: cover;
-  background-position: center 35%;
+  /* background-position: center 35%; */
   background-repeat: no-repeat;
   min-height: 120px;
 }
