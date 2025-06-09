@@ -1,4 +1,6 @@
 import { useState, type PropsWithChildren, createContext } from "react";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../../redux/entities/cart/slice";
 
 type AuthState = {
   isAuthorized: boolean;
@@ -14,9 +16,15 @@ export const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthContextProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [auth, setAuth] = useState<AuthState>({ isAuthorized: false });
+  const dispatch = useDispatch();
   const toggleAuth = () => {
     setAuth((prev) => {
-      return prev.isAuthorized ? { isAuthorized: false } : { isAuthorized: true, name: "User" };
+      if (prev.isAuthorized) {
+        dispatch(clearCart());
+        return { isAuthorized: false };
+      } else {
+        return { isAuthorized: true, name: "User" };
+      }
     });
   };
   return <AuthContext value={{ auth, toggleAuth }}>{children}</AuthContext>;

@@ -9,7 +9,7 @@ type RestaurantContainerProps = {
 export const RestaurantContainer = ({ id }: RestaurantContainerProps) => {
   const restaurant = useSelector((state: RootState) => selectRestaurantById(state, id));
 
-  const { name, menu, reviews } = restaurant;
+  const { name } = restaurant;
 
-  return <Restaurant name={name} menu={menu} reviews={reviews} />;
+  return <Restaurant name={name} />;
 };
