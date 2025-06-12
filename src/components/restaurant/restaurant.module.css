@@ -42,7 +42,7 @@
 }
 
 .tab.active {
-  background-color: #f83f37;
+  background-color: var(--button-light-secondary);
   color: #fff;
   font-weight: bold;
 }

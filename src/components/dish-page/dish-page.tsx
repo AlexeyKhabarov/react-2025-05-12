@@ -14,13 +14,15 @@ export const DishPage = () => {
   const { theme } = useThemeContext();
   const { auth } = useAuthContext();
   const { isAuthorized } = auth;
+  const dish = useSelector((state: RootState) => selectDishById(state, dishId || ""));
+  const { count, increment, decrement } = useDishCount(dishId || "");
 
-  if (!dishId) {
+  if (!dishId || !dish) {
     return null;
   }
 
-  const { id, name, price, ingredients } = useSelector((state: RootState) => selectDishById(state, dishId));
-  const { count, increment, decrement } = useDishCount(id);
+  const { name, price, ingredients } = dish;
+
   return (
     <div className={classNames(style.container, style[theme])}>
       <div className={style.card}>

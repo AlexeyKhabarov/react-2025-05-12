@@ -14,10 +14,12 @@ export const ReviewsPage = () => {
   const { restaurantId } = useParams();
   const { auth } = useAuthContext();
   const { isAuthorized } = auth;
-  if (!restaurantId) {
+  const restaurant = useSelector((state: RootState) => selectRestaurantById(state, restaurantId || ""));
+
+  if (!restaurantId || !restaurant) {
     return null;
   }
-  const { reviews } = useSelector((state: RootState) => selectRestaurantById(state, restaurantId));
+  const { reviews } = restaurant;
 
   if (!reviews.length) {
     return null;

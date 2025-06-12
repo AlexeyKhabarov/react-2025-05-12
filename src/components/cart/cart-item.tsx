@@ -10,11 +10,9 @@ type CartItemProps = {
 export const CartItem = ({ dishId, amount, name }: CartItemProps) => {
   const { increment, decrement } = useDishCount(dishId);
   return (
-    <>
-      <li className={styles.item}>
-        <span className={styles.itemId}>{name}</span>
-        <Counter count={amount} increment={increment} decrement={decrement} />
-      </li>
-    </>
+    <li className={styles.item}>
+      <span className={styles.itemId}>{name}</span>
+      <Counter count={amount} increment={increment} decrement={decrement} />
+    </li>
   );
 };

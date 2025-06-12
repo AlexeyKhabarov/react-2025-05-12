@@ -9,12 +9,13 @@ import type { RootState } from "../../redux/store";
 export const MenuPage = () => {
   const { theme } = useThemeContext();
   const { restaurantId } = useParams();
+  const restaurant = useSelector((state: RootState) => selectRestaurantById(state, restaurantId || ""));
 
-  if (!restaurantId) {
+  if (!restaurantId || !restaurant) {
     return null;
   }
 
-  const { menu } = useSelector((state: RootState) => selectRestaurantById(state, restaurantId));
+  const { menu } = restaurant;
 
   if (!menu.length) {
     return null;
