@@ -4,7 +4,7 @@ import type { RootState } from "../../store";
 type CartState = Record<string, number>;
 
 export const cartSlice = createSlice({
-  name: "cartSlice",
+  name: "cart",
   initialState: {} as Record<string, number>,
   reducers: {
     addToCart: (state: CartState, { payload }) => {
@@ -39,8 +39,8 @@ export const cartSlice = createSlice({
   },
 });
 
-const selectCart = (state: RootState) => state.cartSlice;
-const selectAllDishes = (state: RootState) => state.dishesSlice.entities;
+const selectCart = (state: RootState) => state.cart;
+const selectAllDishes = (state: RootState) => state.dishes.entities;
 export const selectCartWithDishNames = createSelector([selectCart, selectAllDishes], (cartState, dishEntities) => {
   return Object.keys(cartState).map((id) => ({
     id,

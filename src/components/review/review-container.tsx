@@ -9,10 +9,11 @@ type ReviewContainerProps = {
 
 export const ReviewContainer = ({ id }: ReviewContainerProps) => {
   const review = useSelector((state: RootState) => selectReviewById(state, id));
-  const { text, userId } = review;
-  if (!review?.text) {
-    return null;
+  if (!review) {
+    return "loading...";
   }
+
+  const { text, userId } = review;
 
   return <Review text={text} userId={userId} />;
 };

@@ -6,7 +6,7 @@ export interface MenuItem {
 }
 export interface ReviewItem {
   id: string;
-  user: string;
+  userId: string;
   text: string;
   rating: number;
 }
@@ -15,4 +15,8 @@ export interface RestaurantItem {
   name: string;
   menu: MenuItem[];
   reviews: ReviewItem[];
+}
+export interface User {
+  id: string;
+  name: string;
 }
