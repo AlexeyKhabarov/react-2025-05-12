@@ -1,0 +1,76 @@
+.container {
+  padding: 2rem;
+  background-color: #f4f4f4;
+  min-height: 100vh;
+}
+
+.container.dark {
+  background-color: #1a1a1a;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.info {
+  padding: 1.5rem;
+}
+
+.name {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.name.dark {
+  color: #eee;
+}
+
+.price {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #f83f37;
+}
+
+.price.dark {
+  color: #ff9f1c;
+}
+
+.ingredientList {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.ingredient {
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.ingredient.dark {
+  background-color: #2e2e2e;
+  color: #ddd;
+}
+
+.counterWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}

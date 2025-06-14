@@ -29,7 +29,7 @@ export const ReviewForm = () => {
       </div>
       <div className={style.field}>
         <span className={classNames(style.label, style[theme])}>Rating</span>
-        <Counter count={rating} onDecrement={onDecrement} onIncrement={onIncrement} />
+        <Counter count={rating} decrement={onDecrement} increment={onIncrement} />
       </div>
       <Button title={"clear"} onClick={clear} className={`${style.button} ${style[theme]}`} />
     </form>
