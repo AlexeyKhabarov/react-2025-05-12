@@ -1,36 +1,37 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { FULFILLED, PENDING, REJECTED } from "../../../constants/constants";
 type RequestState = Record<string, string>;
 export const requestSlice = createSlice({
-  name: "requestSlice",
+  name: "request",
   initialState: {} as RequestState,
   reducers: {},
   selectors: {
     selectRequestStatus: (state, requestId) => state[requestId] || "idle",
-    selectIsLoading: (state, requestId) => state[requestId] === "pending",
+    selectIsLoading: (state, requestId) => state[requestId] === PENDING,
   },
   extraReducers: (builder) => {
     builder
       .addMatcher(
-        (action) => action.type.endsWith("pending"),
+        (action) => action.type.endsWith(PENDING),
         (state, action: PayloadAction<unknown, string, { requestId: string }>) => {
           if (action.meta?.requestId) {
-            state[action.meta.requestId] = "pending";
+            state[action.meta.requestId] = PENDING;
           }
         }
       )
       .addMatcher(
-        ({ type }) => type.endsWith("fulfilled"),
+        ({ type }) => type.endsWith(FULFILLED),
         (state, action: PayloadAction<unknown, string, { requestId: string }>) => {
           if (action.meta?.requestId) {
-            state[action.meta.requestId] = "fulfilled";
+            state[action.meta.requestId] = FULFILLED;
           }
         }
       )
       .addMatcher(
-        ({ type }) => type.endsWith("rejected"),
+        ({ type }) => type.endsWith(REJECTED),
         (state, action: PayloadAction<unknown, string, { requestId: string }>) => {
           if (action.meta?.requestId) {
-            state[action.meta.requestId] = "rejected";
+            state[action.meta.requestId] = REJECTED;
           }
         }
       );

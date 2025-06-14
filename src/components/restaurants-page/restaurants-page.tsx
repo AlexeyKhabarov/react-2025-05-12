@@ -11,7 +11,6 @@ export const RestaurantsPage = () => {
   const { theme } = useThemeContext();
   const restaurantIds = useSelector(selectRestaurantIds);
   const requestStatus = useRequest(getRestaurants);
-  console.log("restaurantIds", restaurantIds);
 
   if (requestStatus === "idle" || !restaurantIds.length) {
     return "loading...";

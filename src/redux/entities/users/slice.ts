@@ -1,26 +1,41 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { normalizedUsers } from "../../../constants/normalized-mock";
-import type { User } from "../../../types/normalized-restaurants";
+import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
+import type { RootState } from "../../store";
+import { getUsers } from "./get-users";
+import { FULFILLED, PENDING, REJECTED } from "../../../constants/constants";
+import type { User } from "../../../types/restaurants";
 
-type UsersState = {
-  ids: string[];
-  entities: Record<string, User>;
+const usersAdapter = createEntityAdapter<User>();
+type UsersState = ReturnType<typeof usersAdapter.getInitialState> & {
+  requestStatus: "idle" | typeof PENDING | typeof FULFILLED | typeof REJECTED;
 };
+
 const initialState: UsersState = {
-  ids: normalizedUsers.map(({ id }) => id),
-  entities: normalizedUsers.reduce<Record<string, User>>((acc, user) => {
-    acc[user.id] = user;
-    return acc;
-  }, {}),
+  ...usersAdapter.getInitialState({ requestStatus: "idle" }),
 };
 
 export const usersSlice = createSlice({
-  name: "usersSlice",
+  name: "users",
   initialState,
   reducers: {},
   selectors: {
-    selectUserById: (state: UsersState, id: string) => state.entities[id],
+    selectRequestStatus: (state) => state.requestStatus,
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getUsers.pending, (state) => {
+        state.requestStatus = PENDING;
+      })
+      .addCase(getUsers.fulfilled, (state, { payload }) => {
+        usersAdapter.setAll(state, payload);
+      })
+      .addCase(getUsers.rejected, (state) => {
+        state.requestStatus = REJECTED;
+      });
   },
 });
 
-export const { selectUserById } = usersSlice.selectors;
+export const { selectIds: selectUsersIds, selectById: selectUserById } = usersAdapter.getSelectors<RootState>(
+  (state) => state[usersSlice.name]
+);
+
+export const { selectRequestStatus } = usersSlice.selectors;

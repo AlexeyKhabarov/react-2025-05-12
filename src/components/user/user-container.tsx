@@ -9,10 +9,10 @@ type UserContainerProps = {
 
 export const UserContainer = ({ id }: UserContainerProps) => {
   const user = useSelector((state: RootState) => selectUserById(state, id));
-  const { name } = user;
-  if (!name) {
-    return null;
+  if (!user) {
+    return "loading...";
   }
+  const { name } = user;
 
   return <User name={name} />;
 };
