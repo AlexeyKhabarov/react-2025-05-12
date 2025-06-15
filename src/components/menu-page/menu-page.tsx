@@ -2,23 +2,27 @@ import { DishContainer } from "../dish/dish-container";
 import style from "./menu-page.module.css";
 import { useThemeContext } from "../hooks/useThemeContext";
 import { useParams } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectRestaurantById } from "../../redux/entities/restaurants/slice";
-import type { AppDispatch, RootState } from "../../redux/store";
-import { useEffect } from "react";
+import type { RootState } from "../../redux/store";
 import { getDishes } from "../../redux/entities/dishes/get-dishes";
+import { useRequest } from "../../redux/hooks/use-request";
+import { Spinner } from "../spinner/spinner";
+import { PENDING, REJECTED } from "../../constants/constants";
 
 export const MenuPage = () => {
   const { theme } = useThemeContext();
-  const dispatch = useDispatch<AppDispatch>();
   const { restaurantId } = useParams();
   const restaurant = useSelector((state: RootState) => selectRestaurantById(state, restaurantId || ""));
+  const requestStatus = useRequest(getDishes, restaurantId);
 
-  useEffect(() => {
-    if (restaurantId) {
-      dispatch(getDishes(restaurantId));
-    }
-  }, [restaurantId, dispatch]);
+  if (requestStatus === "idle" || requestStatus === PENDING) {
+    return <Spinner />;
+  }
+
+  if (requestStatus === REJECTED) {
+    return "error";
+  }
 
   if (!restaurantId || !restaurant) {
     return null;

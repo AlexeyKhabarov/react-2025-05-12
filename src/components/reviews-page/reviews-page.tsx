@@ -3,30 +3,38 @@ import style from "./reviews-page.module.css";
 import { ReviewContainer } from "../review/review-container";
 import { useThemeContext } from "../hooks/useThemeContext";
 import { useParams } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectRestaurantById } from "../../redux/entities/restaurants/slice";
-import type { AppDispatch, RootState } from "../../redux/store";
+import type { RootState } from "../../redux/store";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { Feedback } from "../feedback/feedback";
-import { Fragment } from "react/jsx-runtime";
-import { useEffect } from "react";
 import { getReviews } from "../../redux/entities/reviews/get-reviews";
 import { getUsers } from "../../redux/entities/users/get-users";
+import { useRequest } from "../../redux/hooks/use-request";
+import { Spinner } from "../spinner/spinner";
+import { PENDING, REJECTED } from "../../constants/constants";
 
 export const ReviewsPage = () => {
   const { theme } = useThemeContext();
   const { restaurantId } = useParams();
-  const dispatch = useDispatch<AppDispatch>();
   const { auth } = useAuthContext();
   const { isAuthorized } = auth;
   const restaurant = useSelector((state: RootState) => selectRestaurantById(state, restaurantId || ""));
+  const reviewsRequestStatus = useRequest(getReviews, restaurantId);
+  const usersRequestStatus = useRequest(getUsers);
 
-  useEffect(() => {
-    if (restaurantId) {
-      dispatch(getReviews(restaurantId));
-      dispatch(getUsers());
-    }
-  }, [restaurantId, dispatch]);
+  if (
+    reviewsRequestStatus === "idle" ||
+    reviewsRequestStatus === PENDING ||
+    usersRequestStatus === "idle" ||
+    usersRequestStatus === PENDING
+  ) {
+    return <Spinner />;
+  }
+
+  if (reviewsRequestStatus === REJECTED || usersRequestStatus === REJECTED) {
+    return "error";
+  }
 
   if (!restaurantId || !restaurant) {
     return null;

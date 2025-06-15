@@ -18,5 +18,4 @@ export const store = configureStore({
     [cartSlice.name]: cartSlice.reducer,
     [requestSlice.name]: requestSlice.reducer,
   },
-  middleware: (getDefaultMiddlewares) => getDefaultMiddlewares().concat(),
 });

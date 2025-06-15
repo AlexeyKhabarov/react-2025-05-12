@@ -10,7 +10,7 @@ type DishContainerProps = {
 export const DishContainer = ({ id }: DishContainerProps) => {
   const dish = useSelector((state: RootState) => selectDishById(state, id));
   if (!dish) {
-    return "loading...";
+    return null;
   }
   const { name, price } = dish;
   return <Dish id={id} name={name} price={price} />;

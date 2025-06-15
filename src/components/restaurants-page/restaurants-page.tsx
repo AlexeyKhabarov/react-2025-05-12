@@ -6,6 +6,8 @@ import { selectRestaurantIds } from "../../redux/entities/restaurants/slice";
 import { Outlet } from "react-router";
 import { getRestaurants } from "../../redux/entities/restaurants/get-restaurants";
 import { useRequest } from "../../redux/hooks/use-request";
+import { Spinner } from "../spinner/spinner";
+import { REJECTED } from "../../constants/constants";
 
 export const RestaurantsPage = () => {
   const { theme } = useThemeContext();
@@ -13,10 +15,10 @@ export const RestaurantsPage = () => {
   const requestStatus = useRequest(getRestaurants);
 
   if (requestStatus === "idle" || !restaurantIds.length) {
-    return "loading...";
+    return <Spinner />;
   }
 
-  if (requestStatus === "rejected") {
+  if (requestStatus === REJECTED) {
     return "error";
   }
   return (
