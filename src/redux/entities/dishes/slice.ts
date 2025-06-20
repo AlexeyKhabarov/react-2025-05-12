@@ -37,7 +37,7 @@ export const dishesSlice = createSlice({
         state.requestStatus = PENDING;
       })
       .addCase(getDishes.fulfilled, (state, { payload }) => {
-        dishesAdapter.setAll(state, payload);
+        dishesAdapter.setMany(state, payload);
       })
       .addCase(getDishes.rejected, (state) => {
         state.requestStatus = REJECTED;

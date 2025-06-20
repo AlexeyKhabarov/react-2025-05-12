@@ -26,7 +26,7 @@ export const usersSlice = createSlice({
         state.requestStatus = PENDING;
       })
       .addCase(getUsers.fulfilled, (state, { payload }) => {
-        usersAdapter.setAll(state, payload);
+        usersAdapter.setMany(state, payload);
       })
       .addCase(getUsers.rejected, (state) => {
         state.requestStatus = REJECTED;

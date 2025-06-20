@@ -30,7 +30,7 @@ export const reviewsSlice = createSlice({
         state.requestStatus = PENDING;
       })
       .addCase(getReviews.fulfilled, (state, action) => {
-        reviewsAdapter.setAll(state, action.payload);
+        reviewsAdapter.setMany(state, action.payload);
       })
       .addCase(getReviews.rejected, (state) => {
         state.requestStatus = REJECTED;
