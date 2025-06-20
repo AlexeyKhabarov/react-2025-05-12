@@ -5,11 +5,24 @@ import { useParams } from "react-router";
 import { useSelector } from "react-redux";
 import { selectRestaurantById } from "../../redux/entities/restaurants/slice";
 import type { RootState } from "../../redux/store";
+import { getDishes } from "../../redux/entities/dishes/get-dishes";
+import { useRequest } from "../../redux/hooks/use-request";
+import { Spinner } from "../spinner/spinner";
+import { PENDING, REJECTED } from "../../constants/constants";
 
 export const MenuPage = () => {
   const { theme } = useThemeContext();
   const { restaurantId } = useParams();
   const restaurant = useSelector((state: RootState) => selectRestaurantById(state, restaurantId || ""));
+  const requestStatus = useRequest(getDishes, restaurantId);
+
+  if (requestStatus === "idle" || requestStatus === PENDING) {
+    return <Spinner />;
+  }
+
+  if (requestStatus === REJECTED) {
+    return "error";
+  }
 
   if (!restaurantId || !restaurant) {
     return null;

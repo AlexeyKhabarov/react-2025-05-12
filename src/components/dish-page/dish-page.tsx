@@ -8,6 +8,10 @@ import { useDishCount } from "../dish/useDishCount";
 import { useThemeContext } from "../hooks/useThemeContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useParams } from "react-router";
+import { getDish } from "../../redux/entities/dishes/get-dish";
+import { useRequest } from "../../redux/hooks/use-request";
+import { Spinner } from "../spinner/spinner";
+import { PENDING, REJECTED } from "../../constants/constants";
 
 export const DishPage = () => {
   const { dishId } = useParams();
@@ -16,6 +20,15 @@ export const DishPage = () => {
   const { isAuthorized } = auth;
   const dish = useSelector((state: RootState) => selectDishById(state, dishId || ""));
   const { count, increment, decrement } = useDishCount(dishId || "");
+  const requestStatus = useRequest(getDish, dishId);
+
+  if (requestStatus === "idle" || requestStatus === PENDING) {
+    return <Spinner />;
+  }
+
+  if (requestStatus === REJECTED) {
+    return "error";
+  }
 
   if (!dishId || !dish) {
     return null;
