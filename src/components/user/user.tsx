@@ -1,6 +1,6 @@
 type UserProps = {
   name: string;
 };
-export const User = ({ name }: UserProps) => {
+export const Username = ({ name }: UserProps) => {
   return <span>{name}</span>;
 };

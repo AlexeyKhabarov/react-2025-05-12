@@ -1,58 +1,44 @@
 import classNames from "classnames";
 import style from "./reviews-page.module.css";
-import { ReviewContainer } from "../review/review-container";
 import { useThemeContext } from "../hooks/useThemeContext";
 import { useParams } from "react-router";
-import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../../redux/entities/restaurants/slice";
-import type { RootState } from "../../redux/store";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { Feedback } from "../feedback/feedback";
-import { getReviews } from "../../redux/entities/reviews/get-reviews";
-import { getUsers } from "../../redux/entities/users/get-users";
-import { useRequest } from "../../redux/hooks/use-request";
 import { Spinner } from "../spinner/spinner";
-import { PENDING, REJECTED } from "../../constants/constants";
+import { useGetReviewsByRestaurantIdQuery, useGetUsersQuery } from "../../redux/api";
+import { Review } from "../review/review";
 
 export const ReviewsPage = () => {
   const { theme } = useThemeContext();
   const { restaurantId } = useParams();
   const { auth } = useAuthContext();
   const { isAuthorized } = auth;
-  const restaurant = useSelector((state: RootState) => selectRestaurantById(state, restaurantId || ""));
-  const reviewsRequestStatus = useRequest(getReviews, restaurantId);
-  const usersRequestStatus = useRequest(getUsers);
-
-  if (
-    reviewsRequestStatus === "idle" ||
-    reviewsRequestStatus === PENDING ||
-    usersRequestStatus === "idle" ||
-    usersRequestStatus === PENDING
-  ) {
+  if (!restaurantId) {
+    return null;
+  }
+  const reviewsById = useGetReviewsByRestaurantIdQuery(restaurantId);
+  const users = useGetUsersQuery();
+  if (reviewsById.isFetching || users.isLoading) {
     return <Spinner />;
   }
 
-  if (reviewsRequestStatus === REJECTED || usersRequestStatus === REJECTED) {
+  if (reviewsById.isError || users.isError) {
     return "error";
   }
 
-  if (!restaurantId || !restaurant) {
-    return null;
+  if (!reviewsById.data?.length || !users.data?.length) {
+    return <div>No reviews</div>;
   }
 
-  const { reviews } = restaurant;
-
-  if (!reviews.length) {
-    return null;
-  }
-
-  return reviews.length ? (
+  return (
     <div className={style.section}>
       <h3 className={classNames(style.subtitle, style[theme])}>Reviews</h3>
       <div className={style.reviews}>
-        {reviews.map((id) => (id ? <ReviewContainer id={id} key={id} /> : null))}
+        {reviewsById.data.map(({ id, text, userId }) => (
+          <Review text={text} userId={userId} key={id} />
+        ))}
         {isAuthorized ? <Feedback /> : null}
       </div>
     </div>
-  ) : null;
+  );
 };

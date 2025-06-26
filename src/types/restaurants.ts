@@ -5,7 +5,7 @@ export interface MenuItem {
   ingredients: string[];
 }
 export interface ReviewItem {
-  id: string;
+  id?: string;
   userId: string;
   text: string;
   rating: number;

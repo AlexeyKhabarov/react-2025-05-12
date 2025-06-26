@@ -4,6 +4,7 @@ import { clearCart } from "../../redux/entities/cart/slice";
 
 type AuthState = {
   isAuthorized: boolean;
+  userId?: string;
   name?: string;
 };
 
@@ -23,7 +24,7 @@ export const AuthContextProvider: React.FC<PropsWithChildren> = ({ children }) =
         dispatch(clearCart());
         return { isAuthorized: false };
       } else {
-        return { isAuthorized: true, name: "User" };
+        return { isAuthorized: true, name: "User", userId: "dfb982e9-b432-4b7d-aec6-7f6ff2e6af54" };
       }
     });
   };
