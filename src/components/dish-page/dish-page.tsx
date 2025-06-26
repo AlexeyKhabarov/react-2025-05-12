@@ -1,40 +1,37 @@
 import classNames from "classnames";
-import { useSelector } from "react-redux";
-import { selectDishById } from "../../redux/entities/dishes/slice";
-import type { RootState } from "../../redux/store";
 import { Counter } from "../counter/counter";
 import style from "./dish-page.module.css";
 import { useDishCount } from "../dish/useDishCount";
 import { useThemeContext } from "../hooks/useThemeContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useParams } from "react-router";
-import { getDish } from "../../redux/entities/dishes/get-dish";
-import { useRequest } from "../../redux/hooks/use-request";
 import { Spinner } from "../spinner/spinner";
-import { PENDING, REJECTED } from "../../constants/constants";
+import { useGetDishByIdQuery } from "../../redux/api";
 
 export const DishPage = () => {
   const { dishId } = useParams();
   const { theme } = useThemeContext();
   const { auth } = useAuthContext();
   const { isAuthorized } = auth;
-  const dish = useSelector((state: RootState) => selectDishById(state, dishId || ""));
+  if (!dishId) {
+    return null;
+  }
   const { count, increment, decrement } = useDishCount(dishId || "");
-  const requestStatus = useRequest(getDish, dishId);
+  const { data, isError, isLoading } = useGetDishByIdQuery(dishId);
 
-  if (requestStatus === "idle" || requestStatus === PENDING) {
+  if (isLoading) {
     return <Spinner />;
   }
 
-  if (requestStatus === REJECTED) {
+  if (isError) {
     return "error";
   }
 
-  if (!dishId || !dish) {
-    return null;
+  if (!data) {
+    return <div>No dish data</div>;
   }
 
-  const { name, price, ingredients } = dish;
+  const { name, price, ingredients } = data;
 
   return (
     <div className={classNames(style.container, style[theme])}>

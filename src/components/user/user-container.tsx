@@ -1,18 +1,22 @@
 import { useSelector } from "react-redux";
-import { User } from "./user";
-import { selectUserById } from "../../redux/entities/users/slice";
-import type { RootState } from "../../redux/store";
+import { Username } from "./user";
+import { useMemo } from "react";
+import { api } from "../../redux/api";
+import type { User } from "../../types/restaurants";
 
 type UserContainerProps = {
   id: string;
 };
 
 export const UserContainer = ({ id }: UserContainerProps) => {
-  const user = useSelector((state: RootState) => selectUserById(state, id));
+  const users = useSelector(api.endpoints.getUsers.select())?.data;
+
+  const user = useMemo(() => {
+    return users?.find((user: User) => user.id === id);
+  }, [users, id]);
   if (!user) {
-    return "loading...";
+    return null;
   }
   const { name } = user;
-
-  return <User name={name} />;
+  return <Username name={name} />;
 };
